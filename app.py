@@ -25,15 +25,12 @@ import torch
 import transformers
 
 
-# notebook_login()  # My Key:  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
 
 
 def conversational_ai():
 
-    # Step 1: Load the Documents and Extract Text From Them
+    # Load the Documents and Extract Text From Them
 
-    # Set your Hugging Face API token as an environment variable
-    os.environ["HUGGINGFACE_TOKEN"] = "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"
 
     document = []
     for file in os.listdir("docs"):
@@ -50,46 +47,30 @@ def conversational_ai():
             loader = TextLoader(text_path)
             document.extend(loader.load())
 
-    # Step 2: Split the Document into Chunks
+    # Split the Document into Chunks
 
     document_splitter = CharacterTextSplitter(separator='\n', chunk_size=500, chunk_overlap=100)
     document_chunks = document_splitter.split_documents(document)
 
-    # Step 3: Download the Embeddings from Hugging Face
+    # Download the Embeddings from Hugging Face
 
     embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')
 
-    # Step 4: Setting Up Chroma as our Vector Database
+    # Setting Up Chroma as our Vector Database
 
     vectordb = Chroma.from_documents(document_chunks, embedding=embeddings, persist_directory='./data')
 
     vectordb.persist()
 
-    # Step 5: Login into Hugging Face Account to Download the Model
-    # login_key = os.environ["HUGGINGFACE_LOGIN_KEY"]
 
-    # Automatically log in using the login key
-    # notebook_login(token=login_key)  # My Key:  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
-
-    huggingface_token = os.environ.get("HUGGINGFACE_TOKEN", None)
-
-    if huggingface_token is None:
-      st.warning("Hugging Face API token not found.")
-
-
-    # Step 6: Download the Llama 2 7B Chat Model
-
-    # Example of using Hugging Face API token with transformers library
-
-
+    #  Download the Llama 2 7B Chat Model
     # Load tokenzier and model with authentication
     tokenizer = AutoTokenizer.from_pretrained("your-model-name", use_auth_token=huggingface_token)
     model = AutoModelForCausalLM.from_pretrained("your-model-name", use_auth_token=huggingface_token)
 
 
 
-
-    # Step 7: Creating a Hugging Face Pipeline
+    # Creating a Hugging Face Pipeline
 
     pipe = pipeline("text-generation",
                    model=model,
@@ -102,18 +83,17 @@ def conversational_ai():
 
     llm = HuggingFacePipeline(pipeline=pipe, model_kwargs={'temperature': 0})
 
-    # Step 8: Creating a memory object to track inputs/outputs
+    # Creating a memory object to track inputs/outputs
 
     memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
 
-    # Step 9: Creating a Conversation Retrieval QA Chain
+    # Creating a Conversation Retrieval QA Chain
 
     pdf_qa = ConversationalRetrievalChain.from_llm(llm=llm,
                                                   retriever=vectordb.as_retriever(search_kwargs={'k': 6}),
                                                   verbose=False, memory=memory)
 
-    # Step 10: Streamlit UI for User Interaction
-
+    # Streamlit UI for User Interaction
     st.subheader("Ask a question:")
     query = st.text_input("Enter your query here:")
 
@@ -127,8 +107,6 @@ def conversational_ai():
 
         result = pdf_qa({"question": query})
         st.info("Answer: " + result["answer"])
-
-
 
 
 if __name__ == "__main__":
