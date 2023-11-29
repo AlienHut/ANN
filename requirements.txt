@@ -1,22 +1,22 @@
-bitsandbytes
-accelerate
-xformers
-einops
-datasets
-loralib
-sentencepiece
-openai
-cohere
-python-multipart
-kaleido
-streamlit
-langchain
-transformers
-huggingface-hub
-torch
-pypdf
-sentence-transformers
-chromadb
-openai  
-tiktoken
-llmx
+pip install bitsandbytes
+pip install accelerate
+pip install xformers
+pip install einops
+pip install datasets
+pip install loralib
+pip install sentencepiece
+pip install openai
+pip install cohere
+pip install python-multipart
+pip install kaleido
+pip install streamlit
+pip install langchain
+pip install transformers
+pip install huggingface-hub
+pip install torch
+pip install pypdf
+pip install sentence-transformers
+pip install chromadb
+pip install openai
+pip install tiktoken
+pip install llmx
