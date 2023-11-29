@@ -29,8 +29,18 @@ import transformers
 
 def conversational_ai():
 
-    # Load the Documents and Extract Text From Them
 
+
+    # Retrieve the Hugging Face API token from the environment variable
+    huggingface_token = os.environ.get("HUGGINGFACE_TOKEN", None)
+
+    if huggingface_token is None:
+    st.warning("Hugging Face API token not found.")
+    else:
+    # Your code that uses the Hugging Face API token goes here
+    st.success("Hugging Face API token found.")
+    
+    # Load the Documents and Extract Text From Them
 
     document = []
     for file in os.listdir("docs"):
@@ -65,9 +75,8 @@ def conversational_ai():
 
     #  Download the Llama 2 7B Chat Model
     # Load tokenzier and model with authentication
-    tokenizer = AutoTokenizer.from_pretrained("your-model-name", use_auth_token=huggingface_token)
-    model = AutoModelForCausalLM.from_pretrained("your-model-name", use_auth_token=huggingface_token)
-
+    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf", use_auth_token=True)
+    model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-2-7b-chat-hf", device_map='auto', torch_dtype=torch.float16, use_auth_token=True)
 
 
     # Creating a Hugging Face Pipeline
