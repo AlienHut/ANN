@@ -21,3 +21,4 @@ jobs:
       - name: Run Streamlit App
         run: |
           streamlit run app.py
+          echo "Streamlit app completed"
