@@ -37,27 +37,34 @@ def conversational_ai():
 
 
     if huggingface_token is None:
-    st.warning("Hugging Face API token not found.")
+        st.warning("Hugging Face API token not found.")
     else:
     # Your code that uses the Hugging Face API token goes here
-    st.success("Hugging Face API token found.")
+        st.success("Hugging Face API token found.")
     
     # Load the Documents and Extract Text From Them
 
+     
+    docs_folder = "docs"  # Your folder name
+
+    # Get the absolute path to the "docs" folder
+    docs_path = os.path.join(os.getcwd(), docs_folder)
+
     document = []
-    for file in os.listdir("docs"):
+
+    for file in os.listdir(docs_path):
+        file_path = os.path.join(docs_path, file)
+
         if file.endswith(".pdf"):
-            pdf_path = "./docs/" + file
-            loader = PyPDFLoader(pdf_path)
+            loader = PyPDFLoader(file_path)
             document.extend(loader.load())
         elif file.endswith('.docx') or file.endswith('.doc'):
-            doc_path = "./docs/" + file
-            loader = Docx2txtLoader(doc_path)
+            loader = Docx2txtLoader(file_path)
             document.extend(loader.load())
         elif file.endswith('.txt'):
-            text_path = "./docs/" + file
-            loader = TextLoader(text_path)
+            loader = TextLoader(file_path)
             document.extend(loader.load())
+
 
     # Split the Document into Chunks
 
