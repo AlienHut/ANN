@@ -6,19 +6,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Download Python 3.13
-        uses: actions/download-artifact@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          name: python-3.13.0.amd64
-          path: /tmp/python-3.13.0.amd64.exe
-
-      - name: Extract Python 3.13
-        run: |
-          gunzip /tmp/python-3.13.0.amd64.exe
-          tar -xf /tmp/python-3.13.0.amd64
-
-      - name: Add Python 3.13 to PATH
-        run: echo "**/python313/bin" >> $GITHUB_PATH
+          python-version: 3.13.0
 
       - name: Install Dependencies
         run: |
