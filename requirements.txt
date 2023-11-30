@@ -8,7 +8,7 @@ sentencepiece==0.1.95
 openai==0.26.1
 cohere
 python-multipart
-kaleido==0.6.1
+kaleido
 streamlit==1.13.0
 langchain==0.3.1
 transformers==4.26.0
