@@ -3,7 +3,7 @@ accelerate==0.7.1
 xformers
 einops==0.4.0
 datasets
-loralib==0.4.2
+loralib
 sentencepiece==0.1.95
 openai==0.26.1
 cohere==0.10.3
