@@ -33,6 +33,7 @@ def conversational_ai():
 
     # Retrieve the Hugging Face API token from the environment variable
     huggingface_token = os.environ.get("HUGGINGFACE_TOKEN", None)
+    huggingface_token = st.secrets["HUGGINGFACE_TOKEN"]
 
     if huggingface_token is None:
         st.warning("Hugging Face API token not found.")
