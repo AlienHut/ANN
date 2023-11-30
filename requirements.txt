@@ -6,7 +6,7 @@ datasets
 loralib
 sentencepiece==0.1.95
 openai==0.26.1
-cohere==0.10.3
+cohere
 python-multipart==0.5.5
 kaleido==0.6.1
 streamlit==1.13.0
