@@ -19,4 +19,4 @@ sentence-transformers
 chromadb==0.3.3
 openai
 tiktoken
-llmx==0.2.5
+llmx
