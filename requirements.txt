@@ -1,6 +1,6 @@
 bitsandbytes==0.41.2.post2
 accelerate==0.7.1
-xformers==23.3.1
+xformers==23.0.1
 einops==0.4.0
 datasets==2.4.3
 loralib==0.4.2
