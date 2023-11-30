@@ -17,6 +17,6 @@ torch==1.13.1
 pypdf
 sentence-transformers
 chromadb==0.3.3
-openai==1.3.3
+openai
 tiktoken==1.6.6
 llmx==0.2.5
