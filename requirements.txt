@@ -10,7 +10,7 @@ cohere
 python-multipart
 kaleido
 streamlit==1.13.0
-langchain==0.3.1
+langchain
 transformers==4.26.0
 huggingface-hub==1.0.1
 torch==1.13.1
