@@ -16,7 +16,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Set Hugging Face Token
-        run: echo "HUGGINGFACE_TOKEN=${{ secrets.HUGGINGFACE_TOKEN }}" >> $GITHUB_ENV
+        run: echo "HUGGINGFACE_TOKEN=${{secrets.HUGGINGFACE_TOKEN}}" >> $GITHUB_ENV
 
       - name: Run Streamlit App
         run: |
