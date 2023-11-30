@@ -35,10 +35,10 @@ def conversational_ai():
     huggingface_token = os.environ.get("HUGGINGFACE_TOKEN", None)
 
     if huggingface_token is None:
-    st.warning("Hugging Face API token not found.")
+        st.warning("Hugging Face API token not found.")
     else:
     # Your code that uses the Hugging Face API token goes here
-    st.success("Hugging Face API token found.")
+        st.success("Hugging Face API token found.")
     
     # Load the Documents and Extract Text From Them
 
