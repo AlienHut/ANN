@@ -11,7 +11,7 @@ python-multipart
 kaleido
 streamlit==1.13.0
 langchain
-transformers==4.26.0
+transformers==4.30.0
 huggingface-hub
 torch==1.13.1
 pypdf
