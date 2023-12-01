@@ -20,3 +20,6 @@ chromadb==0.3.3
 openai
 tiktoken
 llmx
+PyPDFLoader==2.4.1
+TextLoader==0.3.0
+Docx2txtLoader==0.1.0
